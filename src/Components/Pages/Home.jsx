@@ -8,14 +8,14 @@ function Home() {
   return (
     <div className="max-sm:overflow-x-hidden">
       {/* Header Section */}
-      <section className="bg-gradient-radial from-cyan-500 via-transparent to-primaryBg min-h-screen sm:min-h-[70vh] flex flex-col items-center justify-center text-white font-sans p-4">
+      <section className="bg-gradient-radial from-cyan-500 via-transparent to-primaryBg  min-h-screen max-sm:min-h-[100vh] flex flex-col items-center justify-center text-white font-sans p-4">
         <h1 className="text-2xl sm:text-3xl md:text-4xl text-center leading-snug">
           <span className="pb-2 sm:pb-4">
             हमारे साथ करें हर&nbsp;
             <span className="text-[#2DD4BF]">शुभ&nbsp;</span>
             कार्य का प्रारंभ,{" "}
           </span>
-          <span className="flex justify-center pt-2 sm:pt-4">
+          <span className="flex justify-center pt-2 max-sm:pt-4">
             <span className="text-[#2DD4BF]">पवित्र मंत्रों&nbsp;</span>
             और <span className="text-[#2DD4BF]">&nbsp;विधि-विधान&nbsp;</span> के
             साथ।
@@ -53,7 +53,7 @@ function Home() {
       </section>
 
       {/* Main Section */}
-      <section className="w-full min-h-[100vh] bg-dual-gradient p-4">
+      <section className="w-full min-h-[100vh] bg-dual-gradient p-4 max-sm:p-0">
         <div className="flex flex-col items-center text-center">
           <h1 className="text-2xl sm:text-3xl md:text-4xl text-[#2DD4BF] underline pb-2">
             पंडित हर्षित व्यास
@@ -66,8 +66,8 @@ function Home() {
         <div className="flex justify-center py-4">
           <iframe
             width="100%"
-            height="200"
-            className="sm:w-[500px] sm:h-[300px] md:w-[860px] md:h-[515px]"
+            height="200%"
+            className="max-sm:w-[90vw] max-sm:h-auto md:w-[860px] md:h-[515px]"
             src="https://www.youtube.com/embed/kM3cPShpaXo"
             title="YouTube video player"
             frameBorder="0"
