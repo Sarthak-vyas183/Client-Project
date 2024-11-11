@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import Logo from "../../assets/Images/Logo.png";
 import { Link } from "react-router-dom";
 import { TbMenu } from "react-icons/tb";
+import { RiCloseLargeFill } from "react-icons/ri";
+
 
 function Nav() {
   const [SidebarStatus, setSidebarStatus] = useState(false);
@@ -46,13 +48,15 @@ function Nav() {
 
         {/* Mobile Menu Icon */}
         <section className="max-sm:w-[25%] hidden max-sm:flex justify-end" onClick={toggleSidebar}>
-          <TbMenu size={40} />
+            {SidebarStatus ?  
+            <RiCloseLargeFill size={30} className="transition-transform duration-300 ease-in-out" /> :
+            <TbMenu size={40} className="transition-transform duration-300 ease-in-out" /> }
         </section>
-      </div>
+      </div> 
 
       {/* Sidebar for Mobile */}
-      <div className={`w-[100vw] h-[90vh] bg-green-800 fixed top-[10vh] z-20 transform ${SidebarStatus ? 'translate-x-0' : 'translate-x-full'} transition-transform duration-300 ease-in-out max-sm:flex flex-col items-center pt-4`}>
-        <ul className="flex flex-col gap-6 text-white">
+      <div className={`w-[100vw] h-[90vh] bg-[#0C1110] fixed top-[10vh] z-20 transform ${SidebarStatus ? 'translate-x-0' : 'translate-x-full'} transition-transform duration-500 ease-in-out max-sm:flex flex-col items-center pt-4`}>
+        <ul className="flex flex-col  w-full px-4 gap-10 text-white text-2xl">
           <li>
             <Link to="/" onClick={toggleSidebar}>Home</Link>
           </li>
