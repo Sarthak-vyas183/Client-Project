@@ -31,17 +31,17 @@ function Nav() {
               </Link>
             </li>
             <li>
-              <Link to="/" className="hover:text-gray-300">
+              <Link to="/services" className="hover:text-gray-300">
                 Services
               </Link>
             </li>
             <li>
-              <Link to="/" className="hover:text-gray-300">
+              <Link to="/about" className="hover:text-gray-300">
                 About
               </Link>
             </li>
             <button className="py-1 px-2 bg-[#24CFA6] rounded-md text-white">
-              <Link to="/">Connect</Link>
+              <Link to="/connect">Connect</Link>
             </button>
           </ul>
         </section>
@@ -61,14 +61,14 @@ function Nav() {
             <Link to="/" onClick={toggleSidebar}>Home</Link>
           </li>
           <li>
-            <Link to="/" onClick={toggleSidebar}>Services</Link>
+            <Link to="/services" onClick={toggleSidebar}>Services</Link>
           </li>
           <li>
-            <Link to="/" onClick={toggleSidebar}>About</Link>
+            <Link to="/about" onClick={toggleSidebar}>About</Link>
           </li>
           <li>
             <button className="py-2 px-4 bg-[#24CFA6] rounded-md" onClick={toggleSidebar}>
-              <Link to="/">Connect</Link>
+              <Link to="/connect">Connect</Link>
             </button>
           </li>
         </ul>
