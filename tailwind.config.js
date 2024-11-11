@@ -11,6 +11,7 @@ export default {
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(circle , #13493C -75%, rgba(12,12,12,1) 50%)',
+        'gradient-radial-high': 'radial-gradient(ellipse at top right , #13493C -75%, rgba(12,12,12,1) 0%)',
         'dual-gradient': 'radial-gradient(ellipse at center left  , #13493C 0%, rgba(12,12,12,1) 45%)',
         'gradient-redial-2' : 'radial-gradient(circle at center right  ,#13493C 0%, rgba(12,12,12,1) 70%) '
       },

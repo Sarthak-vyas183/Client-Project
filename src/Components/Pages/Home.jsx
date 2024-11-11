@@ -145,7 +145,7 @@ function Home() {
             </span>
           </h1>
         </div>
-      </section>
+      </section> 
     </div>
   );
 }
