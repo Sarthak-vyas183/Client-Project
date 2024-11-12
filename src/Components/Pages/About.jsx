@@ -1,13 +1,17 @@
 import React from "react";
 import TitleImg from "../../assets/Images/TempImages/title.png";
-import CR1 from "../../assets/Images/Certificates/p1.jpeg"
-import CR2 from "../../assets/Images/Certificates/p4.jpeg"
-import CR3 from "../../assets/Images/Certificates/p5.jpeg"
+import CR1 from "../../assets/Images/Certificates/p1.jpeg";
+import CR2 from "../../assets/Images/Certificates/p4.jpeg";
+import CR3 from "../../assets/Images/Certificates/p5.jpeg";
 function About() {
   return (
     <div className="w-[100vw] min-h-screen bg-gradient-radial-high">
-      <div className="w-full h-[90vh] relative top-[10vh] flex gap-6 justify-center pt-4">
-        <img className="w-auto h-[90%] rounded-md" src={TitleImg} alt="" />
+      <div className="w-full min-h-[90vh] relative top-[10vh] max-sm:block flex gap-6 justify-center pt-4 max-sm:px-2">
+        <img
+          className="w-auto max-sm:pb-6 h-[90%] max-sm:h-[70%] rounded-md"
+          src={TitleImg}
+          alt=""
+        />
         <span className="w-[50vw] h-auto text-white">
           <h1 className="text-2xl font-semibold underline">
             पंडित हर्षित व्यास
@@ -61,17 +65,42 @@ function About() {
           <div class="value text-3xl">5+</div>
           <div class="label">सहयोगी</div>
         </div>
-      </div> 
+      </div>
 
-      <div className="certificates w-full min-h-screen px-4">
-      <h1 className="text-white flex justify-start px-24 pb-8">
-        <span className="text-2xl font-semibold underline">प्रमाण पत्र</span>
-      </h1>
-         <div className="flex justify-evenly">
-         <img className="w-auto h-60" src={CR1} alt="" />
-         <img className="w-auto h-60" src={CR2} alt="" />
-         <img className="w-auto h-60" src={CR3} alt="" />
-         </div>
+      <div className="certificates w-full min-h-screen px-4 py-2">
+        <h1 className="text-white flex justify-start px-24 pb-8">
+          <span className="text-2xl font-semibold underline">प्रमाणपत्र</span>
+        </h1>
+        <div className="flex justify-evenly max-sm:block">
+          <span>
+            <p className="flex justify-center">
+              <img
+                className="w-auto h-60 flex justify-center"
+                src={CR1}
+                alt=""
+              />
+            </p>
+            <p className="text-white pt-1 flex justify-center">
+              शुक्ल यजुर्वेद प्रमाणपत्र <br /> (Dgreee)
+            </p>
+          </span>
+          <br />
+          <span>
+            <p className="flex justify-center">
+              <img className="w-auto h-60" src={CR2} alt="" />
+            </p>
+            <p className="text-white pt-1 flex justify-center">
+              शुक्ल यजुर्वेद अंक प्रमाणपत्र <br /> (marksheet)
+            </p>
+          </span>
+          <br />
+          <span>
+            <p className="flex justify-center">
+              <img className="w-auto h-60" src={CR3} alt="" />
+            </p>
+            <p className="text-white pt-1 flex justify-center">प्रमाणपत्र</p>
+          </span>
+        </div>
       </div>
     </div>
   );
