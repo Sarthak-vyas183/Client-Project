@@ -8,7 +8,7 @@ function About() {
     <div className="w-[100vw] min-h-screen bg-gradient-radial-high">
       <div className="w-full min-h-[90vh] relative top-[10vh] max-sm:block flex gap-6 justify-center pt-4 max-sm:px-2">
         <img
-          className="w-auto max-sm:pb-6 h-[90%] max-sm:h-[70%] rounded-md"
+          className="w-auto max-sm:pb-6 h-[10%] max-sm:h-[70%] rounded-md"
           src={TitleImg}
           alt=""
         />
