@@ -4,10 +4,10 @@ import { Link } from "react-router-dom";
 
 function Footer() {
   return (
-    <section className="w-full h-auto flex flex-col justify-center items-center text-white">
+    <section className="w-full h-auto flex flex-col justify-center items-center text-white pb-8">
       <div className="w-[95%] h-full">
 
-        <header className="w-full h-auto flex flex-col md:flex-row bg-[#0C0C0C] border-y-[1px] border-white">
+        <header className="w-full h-auto flex flex-col md:flex-row bg-[#0C0C0C] border-y-[1px] border-white pb-4">
           <div className="w-full md:w-[30%] h-auto flex flex-col py-8 px-4">
             <span className="flex flex-col items-center">
               <img className="w-16 h-16" src={Logo} alt="" />
@@ -65,7 +65,7 @@ function Footer() {
           </div>
         </header>
 
-        <div className="w-full h-auto flex justify-center pt-2">
+        <div className="w-full h-auto flex justify-center pt-4">
           <span className="text-center">
             <h1 className="text-sm">Copyright © 2024 navgrahpujaUjjain.com</h1>
             <p className="text-xs">All Rights Reserved.</p>
