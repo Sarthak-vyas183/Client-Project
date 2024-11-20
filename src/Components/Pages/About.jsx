@@ -1,3 +1,5 @@
+/* eslint-disable react/no-unknown-property */
+/* eslint-disable no-unused-vars */
 import React from "react";
 import TitleImg from "../../assets/Images/TempImages/title.png";
 import CR1 from "../../assets/Images/Certificates/p1.jpeg";

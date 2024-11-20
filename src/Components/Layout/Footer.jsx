@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React from "react";
 import Logo from "../../assets/Images/Logo.png";
 import { Link } from "react-router-dom";
@@ -11,7 +12,7 @@ function Footer() {
           <div className="w-full md:w-[30%] h-auto flex flex-col py-8 px-4">
             <span className="flex flex-col items-center">
               <img className="w-16 h-16" src={Logo} alt="" />
-              <p className="text-center">Let's Connect with our Socials</p>
+              <p className="text-center">Let Connect with our Socials</p>
             </span>
             <span className="flex justify-center gap-2 cursor-pointer mt-2">
               <p>youtube</p>
