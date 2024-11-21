@@ -6,7 +6,6 @@ import img2 from "../../assets/Images/TempImages/img2.png";
 import img3 from "../../assets/Images/TempImages/img3.png";
 import userContext from "../../Context/userContext";
 import bg_img from "../../assets/Images/main-home-page-bg-2.png";
-import bg_img2 from "../../assets/Images/bgimg2.png";
 
 function Home() {
   const services = [
