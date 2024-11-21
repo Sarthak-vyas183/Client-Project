@@ -1,6 +1,8 @@
-import React, { useState } from 'react';
-
+/* eslint-disable no-unused-vars */
+import React, { useContext, useState } from 'react';
+import userContext from '../../Context/userContext';
 function ConnectForm() {
+  const {darkMode} = useContext(userContext)
   const [formData, setFormData] = useState({
     fullname: '',
     email: '',
@@ -17,15 +19,15 @@ function ConnectForm() {
   };
 
   return (
-    <div className='w-full min-h-screen bg-gradient-radial flex items-center justify-center p-4'>
-      <div className='w-full max-w-md md:max-w-lg lg:max-w-xl bg-opacity-80 bg-[#0C0F0E] p-6 rounded-lg'>
+    <div className={`w-full min-h-screen ${darkMode ? 'bg-gradient-radial' : 'bg-gradient-flow-for-about'}  flex items-center justify-center p-4`}>
+      <div className={`w-full max-w-md md:max-w-lg lg:max-w-xl bg-opacity-80 ${darkMode ? 'bg-[#0C0F0E] text-white' : 'bg-white text-black'} p-6 pt-8 rounded-lg`}>
         <div className='text-center mb-6'>
-          <h1 className='text-white text-2xl md:text-3xl font-semibold'>Contact Form</h1>
+          <h1 className={`text-2xl md:text-3xl font-semibold`}>Contact Form</h1>
         </div>
 
-        <div className="space-y-4">
+        <div className={`space-y-4 ${darkMode ? 'text-white' : 'text-black'}`}>
           <div>
-            <label className="text-white" htmlFor="fullname">Name*</label>
+            <label htmlFor="fullname">Name*</label>
             <input
               className="outline-none w-full h-[45px] bg-transparent border-b-2 border-white text-white px-2"
               onChange={handleChange}
@@ -38,7 +40,7 @@ function ConnectForm() {
           </div>
 
           <div>
-            <label className="text-white" htmlFor="email">Email*</label>
+            <label  htmlFor="email">Email*</label>
             <input
               className="outline-none w-full h-[45px] bg-transparent border-b-2 border-white text-white px-2"
               placeholder='xyz@gmail.com'
@@ -51,7 +53,7 @@ function ConnectForm() {
           </div>
 
           <div>
-            <label className="text-white" htmlFor="pujaType">Select Puja*</label>
+            <label  htmlFor="pujaType">Select Puja*</label>
             <select
               id="pujaType"
               name="pujaType"
@@ -71,7 +73,7 @@ function ConnectForm() {
           </div>
 
           <div>
-            <label className="text-white" htmlFor="message">Message*</label>
+            <label  htmlFor="message">Message*</label>
             <textarea
               placeholder='Type any message here.'
               id="message"
@@ -84,7 +86,7 @@ function ConnectForm() {
           </div>
 
           <div className='flex justify-end pt-4'>
-            <button className='px-6 py-2 rounded-md bg-[#24CFA6] text-white font-medium hover:bg-[#20B093] transition-all'>
+            <button className={`px-6 py-2 rounded-md ${darkMode ? 'bg-[#24CFA6]' : 'bg-[#FF7E35]'} text-white font-medium hover:bg-[#20B093] transition-all`}>
               Submit
             </button>
           </div>

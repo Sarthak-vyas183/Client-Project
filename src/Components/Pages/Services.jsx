@@ -1,12 +1,15 @@
-import React from 'react';
+/* eslint-disable no-unused-vars */
+import React, { useContext } from 'react';
 import img1 from "../../assets/Images/TempImages/image.png";
 import img2 from "../../assets/Images/TempImages/img2.png";
 import img3 from "../../assets/Images/TempImages/img3.png";
 import img4 from "../../assets/Images/TempImages/mangle.png";
 import img5 from "../../assets/Images/TempImages/shani.png";
 import img6 from "../../assets/Images/TempImages/Vastu.png";
+import userContext from "../../Context/userContext";
 
 function Services() {
+  const {darkMode} = useContext(userContext); 
   const services = [
     {
       img: img1,
@@ -47,9 +50,9 @@ function Services() {
   ];
 
   return (
-    <div className='w-full min-h-[90vh] bg-gradient-radial pt-[10vh]'>
+    <div className={`w-full min-h-[90vh] ${darkMode ? 'bg-gradient-radial' : 'bg-gradient-flow-for-service'} pt-[10vh]`}>
       <div className="w-full">
-        <h1 className="text-2xl sm:text-3xl text-teal-400 flex justify-center p-4">
+        <h1 className={`text-2xl sm:text-3xl ${darkMode ? 'text-teal-400' : 'text-[#FF7D33]'} flex justify-center p-4`}>
           प्रमुख पुजाये
         </h1>
         <div className="flex flex-wrap gap-4 justify-center">
@@ -64,7 +67,7 @@ function Services() {
                   alt="Puja"
                   className="w-full h-40 sm:h-48 object-cover"
                 />
-                <span className="absolute top-2 right-2 bg-teal-400 text-black text-xs font-bold px-2 py-1 rounded">
+                <span className={`absolute top-2 right-2 ${darkMode ? 'bg-teal-400' : 'bg-[#FF7D33]'} text-black text-xs font-bold px-2 py-1 rounded`}>
                   वैदिक पद्धति
                 </span>
               </div>
@@ -79,21 +82,21 @@ function Services() {
                   {service.tags.map((tag, i) => (
                     <span
                       key={i}
-                      className="bg-teal-400 text-black text-xs font-semibold px-2.5 py-0.5 rounded"
+                      className={`${darkMode ? 'bg-teal-400' : 'bg-[#FF7D33]'} text-black text-xs font-semibold px-2.5 py-0.5 rounded`}
                     >
                       {tag}
                     </span>
                   ))}
                 </div>
-                <div className="flex justify-between items-center p-2 mt-4 bg-black rounded-lg">
-                  <span className="text-white">आचार्य पं. हर्षित व्यास</span>
-                  <span className="text-teal-400 font-bold">विशेषज्ञ</span>
+                <div className={`flex justify-between items-center p-2 mt-4 ${darkMode ? 'bg-black' : 'bg-white'} rounded-lg`}>
+                  <span className={`${darkMode ? 'text-white' : 'text-black'}`}>आचार्य पं. हर्षित व्यास</span>
+                  <span className={`${darkMode ? 'text-teal-400' : 'text-[#FF7D33]'} font-bold`}>विशेषज्ञ</span>
                 </div>
                 <div className="pt-4">
-                  <button className="w-full bg-teal-400 text-black font-bold py-2 mb-2 rounded">
+                  <button className={`w-full ${darkMode ? 'bg-teal-400' : 'bg-[#FF7D33]'} text-black font-bold py-2 mb-2 rounded`}>
                     Book Puja
                   </button>
-                  <button className="w-full bg-teal-400 text-black font-bold py-2 rounded">
+                  <button className={`w-full ${darkMode ? 'bg-teal-400' : 'bg-[#FF7D33]'} text-black font-bold py-2 rounded`}>
                     Explore Puja
                   </button>
                 </div>

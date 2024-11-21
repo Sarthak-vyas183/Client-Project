@@ -1,14 +1,15 @@
 /* eslint-disable no-unused-vars */
-import React from "react";
+import React, { useContext } from "react";
 import Logo from "../../assets/Images/Logo.png";
 import { Link } from "react-router-dom";
+import userContext from "../../Context/userContext";
 
 function Footer() {
+  const {darkMode} = useContext(userContext);
   return (
-    <section className="w-full h-auto flex flex-col justify-center items-center text-white pb-8">
+    <section className={`w-full h-auto flex flex-col justify-center items-center ${darkMode ? "text-white" : 'bg-white text-black'}  pb-8`}>
       <div className="w-[95%] h-full">
-
-        <header className="w-full h-auto flex flex-col md:flex-row bg-[#0C0C0C] border-y-[1px] border-white pb-4">
+        <header className={`w-full h-auto flex flex-col md:flex-row ${darkMode ? 'bg-[#0C0C0C] border-white' : 'bg-[#FFFDFC] text-black border-black'} border-y-[1px]  pb-4`}>
           <div className="w-full md:w-[30%] h-auto flex flex-col py-8 px-4">
             <span className="flex flex-col items-center">
               <img className="w-16 h-16" src={Logo} alt="" />

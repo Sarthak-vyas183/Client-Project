@@ -1,20 +1,22 @@
 /* eslint-disable react/no-unknown-property */
 /* eslint-disable no-unused-vars */
-import React from "react";
+import React, { useContext } from "react";
 import TitleImg from "../../assets/Images/TempImages/title.png";
 import CR1 from "../../assets/Images/Certificates/p1.jpeg";
 import CR2 from "../../assets/Images/Certificates/p4.jpeg";
-import CR3 from "../../assets/Images/Certificates/p5.jpeg";
+import CR3 from "../../assets/Images/Certificates/p5.jpeg"; 
+import userContext from "../../Context/userContext";
 function About() {
+  const {darkMode} = useContext(userContext);
   return (
-    <div className="w-[100vw] min-h-screen bg-gradient-radial-high">
+    <div className={`w-[100vw] min-h-screen ${darkMode ? 'bg-gradient-radial-high text-white' : 'bg-gradient-flow-for-about text-black'}`}>
       <div className="w-full min-h-[90vh] relative top-[10vh] max-sm:block flex gap-6 justify-center pt-4 max-sm:px-2">
         <img
           className="w-auto max-sm:pb-6 h-[10%] max-sm:h-[70%] rounded-md"
           src={TitleImg}
           alt=""
         />
-        <span className="w-[50vw] h-auto text-white">
+        <span className="w-[50vw] h-auto">
           <h1 className="text-2xl font-semibold underline">
             पंडित हर्षित व्यास
           </h1>{" "}
@@ -47,22 +49,22 @@ function About() {
       </div>
 
       <div class="achievementBox w-full h-[40vh]  flex justify-around items-center">
-        <div class="achievementItem text-center text-white">
+        <div class="achievementItem text-center">
           <div class="icon text-4xl">😊</div>
           <div class="value text-3xl">1500</div>
           <div class="label">खुश यजमान</div>
         </div>
-        <div class="achievementItem text-center text-white">
+        <div class="achievementItem text-center">
           <div class="icon text-4xl">🔥</div>
           <div class="value text-3xl">4000</div>
           <div class="label">सम्प्र पूजा</div>
         </div>
-        <div class="achievementItem text-center text-white">
+        <div class="achievementItem text-center">
           <div class="icon text-4xl">🎧</div>
           <div class="value text-3xl">24/7</div>
           <div class="label">उपलब्धता</div>
         </div>
-        <div class="achievementItem text-center text-white">
+        <div class="achievementItem text-center ">
           <div class="icon text-4xl">👥</div>
           <div class="value text-3xl">5+</div>
           <div class="label">सहयोगी</div>
@@ -70,7 +72,7 @@ function About() {
       </div>
 
       <div className="certificates w-full min-h-screen px-4 py-2">
-        <h1 className="text-white flex justify-start px-24 pb-8">
+        <h1 className=" flex justify-start px-24 pb-8">
           <span className="text-2xl font-semibold underline">प्रमाणपत्र</span>
         </h1>
         <div className="flex justify-evenly max-sm:block">
@@ -91,7 +93,7 @@ function About() {
             <p className="flex justify-center">
               <img className="w-auto h-60" src={CR2} alt="" />
             </p>
-            <p className="text-white pt-1 flex justify-center">
+            <p className=" pt-1 flex justify-center">
               शुक्ल यजुर्वेद अंक प्रमाणपत्र <br /> (marksheet)
             </p>
           </span>
@@ -100,7 +102,7 @@ function About() {
             <p className="flex justify-center">
               <img className="w-auto h-60" src={CR3} alt="" />
             </p>
-            <p className="text-white pt-1 flex justify-center">प्रमाणपत्र</p>
+            <p className=" pt-1 flex justify-center">प्रमाणपत्र</p>
           </span>
         </div>
       </div>
