@@ -13,9 +13,7 @@ function Home() {
   console.log(darkMode);
   return (
     <div className="max-sm:overflow-x-hidden">
-      <style>
-        
-      </style>
+      <style></style>
       {/* Header Section */}
       <section
         style={{
@@ -102,12 +100,9 @@ function Home() {
       >
         <div>
           <div
-           style={{
-            backgroundImage: darkMode ? "" : `url(${bg_img2})`,
-            backgroundSize: "cover",
-            backgroundPosition: `center`,
-          }}
-          className={`flex flex-col items-center text-center py-14 max-sm:py-0`}>
+            id={`${darkMode ? "homePageIntrodivDark" : "homePageIntrodiv"}`}
+            className={`flex flex-col items-center text-center py-14 max-sm:py-0`}
+          >
             <h1
               className={`text-2xl sm:text-3xl md:text-4xl ${
                 darkMode ? "text-[#2DD4BF]" : "text-black"
@@ -127,7 +122,6 @@ function Home() {
               className="max-sm:w-[90vw] max-sm:h-auto md:w-[860px] md:h-[515px]"
               src="https://www.youtube.com/embed/kM3cPShpaXo"
               title="YouTube video player"
-              frameBorder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
             ></iframe>

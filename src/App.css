@@ -5,3 +5,24 @@ body {
     font-style: normal;
     overflow-x: hidden;
 }
+
+/* Home page component css */
+#homePageIntrodiv{
+    background-image: url('./assets/images/bgImg2.png');
+    background-size: cover;
+    background-position: 'center';
+}
+
+#homePageIntrodivDark {
+    background: none;
+} 
+
+@media (max-width: 640px) {
+    #homePageIntrodiv {
+      background-image: none;
+      padding-top: 0;
+      padding-bottom: 0;
+    }
+}
+
+/* home page component css end */
