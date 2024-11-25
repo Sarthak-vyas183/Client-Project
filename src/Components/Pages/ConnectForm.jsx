@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React, { useContext, useState } from 'react';
 import userContext from '../../Context/userContext';
+import { toast } from 'react-toastify';
 function ConnectForm() {
   const {darkMode} = useContext(userContext)
   const [formData, setFormData] = useState({
@@ -18,6 +19,10 @@ function ConnectForm() {
     }));
   };
 
+  const handleSubmit = () => {
+    toast("Testing: Phase: Development");
+  }
+
   return (
     <div className={`w-full min-h-screen ${darkMode ? 'bg-gradient-radial' : 'bg-gradient-flow-for-about'}  flex items-center justify-center p-4`}>
       <div className={`w-full max-w-md md:max-w-lg lg:max-w-xl bg-opacity-80 ${darkMode ? 'bg-[#0C0F0E] text-white' : 'bg-white text-black'} p-6 pt-8 rounded-lg`}>
@@ -29,7 +34,7 @@ function ConnectForm() {
           <div>
             <label htmlFor="fullname">Name*</label>
             <input
-              className="outline-none w-full h-[45px] bg-transparent border-b-2 border-white text-white px-2"
+              className="outline-none w-full h-[45px] bg-transparent border-b-2 border-white  px-2"
               onChange={handleChange}
               placeholder='Sarthak Vyas'
               type="text"
@@ -42,7 +47,7 @@ function ConnectForm() {
           <div>
             <label  htmlFor="email">Email*</label>
             <input
-              className="outline-none w-full h-[45px] bg-transparent border-b-2 border-white text-white px-2"
+              className="outline-none w-full h-[45px] bg-transparent border-b-2 border-white  px-2"
               placeholder='xyz@gmail.com'
               type="text"
               id='email'
@@ -57,7 +62,7 @@ function ConnectForm() {
             <select
               id="pujaType"
               name="pujaType"
-              className='outline-none bg-transparent border-b-2 border-white text-white w-full h-[45px] px-2'
+              className='outline-none bg-transparent border-b-2 border-white  w-full h-[45px] px-2'
               onChange={handleChange}
               value={formData.pujaType}
             >
@@ -78,7 +83,7 @@ function ConnectForm() {
               placeholder='Type any message here.'
               id="message"
               name="message"
-              className='outline-none bg-transparent border-b-2 border-white text-white w-full h-[100px] px-2'
+              className='outline-none bg-transparent border-b-2 border-white  w-full h-[100px] px-2'
               rows={3}
               onChange={handleChange}
               value={formData.message}
@@ -86,7 +91,7 @@ function ConnectForm() {
           </div>
 
           <div className='flex justify-end pt-4'>
-            <button className={`px-6 py-2 rounded-md ${darkMode ? 'bg-[#24CFA6]' : 'bg-[#FF7E35]'} text-white font-medium hover:bg-[#20B093] transition-all`}>
+            <button className={`px-6 py-2 rounded-md ${darkMode ? 'bg-[#24CFA6] hover:bg-[#20B093]' : 'bg-[#FF7E35] hover:bg-[#FF7E50]'} text-white font-medium  transition-all`} onClick={handleSubmit}>
               Submit
             </button>
           </div>

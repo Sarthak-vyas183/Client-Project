@@ -6,8 +6,18 @@ import img2 from "../../assets/Images/TempImages/img2.png";
 import img3 from "../../assets/Images/TempImages/img3.png";
 import userContext from "../../Context/userContext";
 import bg_img from "../../assets/Images/main-home-page-bg-2.png";
-
+import bg_img2 from "../../assets/Images/bgimg2.png";
+import 'react-toastify/dist/ReactToastify.css';
+import { toast } from "react-toastify";
 function Home() {
+
+   const handleBookpuja = () => {
+     toast.promise("In Development")
+   }
+
+   const handleExplorePuja = () => {
+    toast.promise("In Development")
+   }
   const services = [
   {
     img: img1,
@@ -42,7 +52,7 @@ function Home() {
         }}
         className={`${
           darkMode ? "bg-gradient-radial text-white" : "bg-[#8ACFF7] text-black"
-        } from-cyan-500 via-transparent to-primaryBg  min-h-screen max-sm:min-h-[50vh] max-sm:pt-[10vh] flex flex-col items-center justify-center  font-sans p-4`}
+        } from-cyan-500 via-transparent to-primaryBg  min-h-screen ${darkMode ? 'max-sm:min-h-[100vh]' : 'max-sm:min-h-[50vh]'} max-sm:pt-[10vh] flex flex-col items-center justify-center  font-sans p-4`}
       >
         <h1 className="text-2xl sm:text-3xl md:text-4xl text-center leading-snug">
           <span className="pb-2 sm:pb-4">
@@ -153,7 +163,7 @@ function Home() {
               darkMode ? "bg-teal-400" : "bg-white"
             } text-black font-semibold rounded-full text-sm sm:text-base`}
           >
-            पंडित जी का परिचय
+            <Link to="/about">पंडित जी का परिचय</Link>
           </button>
         </div>
 
@@ -204,10 +214,10 @@ function Home() {
                   <span className={`${darkMode ? 'text-teal-400' : 'text-[#FF7D33]'} font-bold`}>विशेषज्ञ</span>
                 </div>
                 <div className="pt-4">
-                  <button className={`w-full ${darkMode ? 'bg-teal-400' : 'bg-[#FF7D33]'} text-black font-bold py-2 mb-2 rounded`}>
+                  <button className={`w-full ${darkMode ? 'bg-teal-400' : 'bg-[#FF7D33]'} text-black font-bold py-2 mb-2 rounded`} onClick={handleBookpuja}>
                     Book Puja
                   </button>
-                  <button className={`w-full ${darkMode ? 'bg-teal-400' : 'bg-[#FF7D33]'} text-black font-bold py-2 rounded`}>
+                  <button className={`w-full ${darkMode ? 'bg-teal-400' : 'bg-[#FF7D33]'} text-black font-bold py-2 rounded`} onClick={handleExplorePuja}>
                     Explore Puja
                   </button>
                 </div>
@@ -218,7 +228,7 @@ function Home() {
 
           <h1 className="flex justify-center py-6 pt-8">
             <span className={`${darkMode ? 'bg-teal-500' : 'bg-[#FF7D33]'} text-black py-2 px-4 rounded-md`}>
-              Explore More Puja
+              <Link to="/services">Explore More Puja</Link>
             </span>
           </h1>
         </div>

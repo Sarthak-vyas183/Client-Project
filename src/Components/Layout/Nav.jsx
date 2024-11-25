@@ -57,6 +57,14 @@ function Nav() {
             >
               <Link to="/connect">Connect</Link>
             </button>
+
+            <button
+              className={`py-1 px-4 ${
+                darkMode ? "bg-[#24CFA6]" : "bg-blue-400"
+              } rounded-md text-white`}
+            >
+              <Link to="/login">login</Link>
+            </button>
             <li>
               <li
                 className="flex flex-col items-center justify-center cursor-pointer max-sm:space-y-0.5"
@@ -135,6 +143,13 @@ function Nav() {
               onClick={toggleSidebar}
             >
               <Link to="/connect">Connect</Link>
+            </button> 
+
+            <button
+              className={`py-2 px-4 ${darkMode ? 'bg-[#24CFA6]' : 'bg-[#FF7E35]'} rounded-md`}
+              onClick={toggleSidebar}
+            >
+              <Link to="/login">Login</Link>
             </button>
           </li>
         </ul>
