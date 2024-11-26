@@ -144,7 +144,7 @@ function Nav() {
             >
               <Link to="/connect">Connect</Link>
             </button> 
-
+             <br /> <br />
             <button
               className={`py-2 px-4 ${darkMode ? 'bg-[#24CFA6]' : 'bg-[#FF7E35]'} rounded-md`}
               onClick={toggleSidebar}
