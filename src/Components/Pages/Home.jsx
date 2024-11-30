@@ -39,7 +39,6 @@ function Home() {
   }, 
 ]
   const { darkMode } = useContext(userContext);
-  console.log(darkMode);
   return (
     <div className="max-sm:overflow-x-hidden">
       <style></style>

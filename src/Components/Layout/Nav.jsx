@@ -9,7 +9,7 @@ import { MdLightMode } from "react-icons/md";
 import userContext from "../../Context/userContext";
 function Nav() {
   const [SidebarStatus, setSidebarStatus] = useState(false);
-  const { darkMode, setDarkMode } = useContext(userContext);
+  const { darkMode, setDarkMode, token, logoutUser } = useContext(userContext);
   const toggleSidebar = () => {
     setSidebarStatus(!SidebarStatus);
     console.log(SidebarStatus);
@@ -34,37 +34,55 @@ function Nav() {
 
         {/* Desktop Links */}
         <section className="w-[60%] max-sm:hidden h-full pr-8 flex items-center justify-end">
-          <ul className="flex gap-8">
+          <ul className="flex gap-10 items-end">
             <li>
               <Link to="/" className="hover:text-gray-500">
                 Home
               </Link>
-            </li>
+            </li> 
+
             <li>
               <Link to="/services" className="hover:text-gray-500">
                 Services
               </Link>
-            </li>
+            </li> 
+
             <li>
               <Link to="/about" className="hover:text-gray-500">
                 About
               </Link>
             </li>
-            <button
-              className={`py-1 px-2 ${
-                darkMode ? "bg-[#24CFA6]" : "bg-[#FF7D33]"
-              } rounded-md text-white`}
-            >
-              <Link to="/connect">Connect</Link>
-            </button>
 
-            <button
-              className={`py-1 px-4 ${
-                darkMode ? "bg-[#24CFA6]" : "bg-blue-400"
-              } rounded-md text-white`}
-            >
-              <Link to="/login">login</Link>
-            </button>
+            <li>
+              <Link to="/connect" className="hover:text-gray-500">
+                Connect
+              </Link>
+            </li> 
+
+            {token ? (
+              <div className="flex gap-6">
+                <li className="flex items-end">
+                  <Link to="/profile" className="hover:text-gray-500">
+                    Profile
+                  </Link>
+                </li>
+                <button
+                  className={`py-1 px-4 ${
+                    darkMode ? "bg-[#24CFA6]" : "bg-blue-400"
+                  } rounded-md text-white`}
+                >
+                  <span onClick={logoutUser}>Logout</span>
+                </button>
+              </div>
+            ) : (
+              <button
+                className={`py-1 px-4 ${
+                  darkMode ? "bg-[#24CFA6]" : "bg-blue-400"
+                } rounded-md text-white`}
+              >
+                <Link to="/login">login</Link>
+              </button>
+            )}
             <li>
               <li
                 className="flex flex-col items-center justify-center cursor-pointer max-sm:space-y-0.5"
@@ -108,20 +126,32 @@ function Nav() {
           </section>
 
           {darkMode ? (
-            <CiLight onClick={modechange} className="max-sm:text-3xl hidden max-sm:flex  text-white transition-colors duration-200 ease-in-out" />
+            <CiLight
+              onClick={modechange}
+              className="max-sm:text-3xl hidden max-sm:flex  text-white transition-colors duration-200 ease-in-out"
+            />
           ) : (
-            <MdLightMode onClick={modechange} className="max-sm:text-2xl hidden max-sm:flex text-black transition-colors duration-200 ease-in-out" />
+            <MdLightMode
+              onClick={modechange}
+              className="max-sm:text-2xl hidden max-sm:flex text-black transition-colors duration-200 ease-in-out"
+            />
           )}
         </div>
       </div>
 
       {/* Sidebar for Mobile */}
       <div
-        className={`w-[100vw] h-[90vh] ${darkMode ? 'bg-[#0C1110]' : 'bg-[#D6EEFC] opacity-90'} fixed top-[10vh] z-20 transform ${
+        className={`w-[100vw] h-[90vh] ${
+          darkMode ? "bg-[#0C1110]" : "bg-[#D6EEFC] opacity-90"
+        } fixed top-[10vh] z-20 transform ${
           SidebarStatus ? "translate-x-0" : "translate-x-full"
         } transition-transform duration-500 ease-in-out max-sm:flex flex-col items-center pt-4`}
       >
-        <ul className={`flex flex-col  w-full px-4 gap-10 ${darkMode ? 'text-white' : 'text-black'} text-2xl`}>
+        <ul
+          className={`flex flex-col  w-full px-4 gap-10 ${
+            darkMode ? "text-white" : "text-black"
+          } text-2xl`}
+        >
           <li>
             <Link to="/" onClick={toggleSidebar}>
               Home
@@ -139,14 +169,18 @@ function Nav() {
           </li>
           <li>
             <button
-              className={`py-2 px-4 ${darkMode ? 'bg-[#24CFA6]' : 'bg-[#FF7E35]'} rounded-md`}
+              className={`py-2 px-4 ${
+                darkMode ? "bg-[#24CFA6]" : "bg-[#FF7E35]"
+              } rounded-md`}
               onClick={toggleSidebar}
             >
               <Link to="/connect">Connect</Link>
-            </button> 
-             <br /> <br />
+            </button>
+            <br /> <br />
             <button
-              className={`py-2 px-4 ${darkMode ? 'bg-[#24CFA6]' : 'bg-[#FF7E35]'} rounded-md`}
+              className={`py-2 px-4 ${
+                darkMode ? "bg-[#24CFA6]" : "bg-[#FF7E35]"
+              } rounded-md`}
               onClick={toggleSidebar}
             >
               <Link to="/login">Login</Link>
