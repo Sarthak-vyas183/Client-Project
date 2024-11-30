@@ -12,7 +12,6 @@ function Nav() {
   const { darkMode, setDarkMode, token, logoutUser } = useContext(userContext);
   const toggleSidebar = () => {
     setSidebarStatus(!SidebarStatus);
-    console.log(SidebarStatus);
   };
 
   const modechange = () => {
@@ -84,7 +83,7 @@ function Nav() {
               </button>
             )}
             <li>
-              <li
+              <span
                 className="flex flex-col items-center justify-center cursor-pointer max-sm:space-y-0.5"
                 onClick={modechange}
               >
@@ -101,7 +100,7 @@ function Nav() {
                 >
                   {darkMode ? "Light" : "Dark"}
                 </p>
-              </li>
+              </span>
             </li>
           </ul>
         </section>
@@ -168,23 +167,34 @@ function Nav() {
             </Link>
           </li>
           <li>
-            <button
-              className={`py-2 px-4 ${
-                darkMode ? "bg-[#24CFA6]" : "bg-[#FF7E35]"
-              } rounded-md`}
-              onClick={toggleSidebar}
-            >
-              <Link to="/connect">Connect</Link>
-            </button>
+          <Link to="/connect" onClick={toggleSidebar}>
+              connect
+          </Link>
             <br /> <br />
-            <button
-              className={`py-2 px-4 ${
-                darkMode ? "bg-[#24CFA6]" : "bg-[#FF7E35]"
-              } rounded-md`}
-              onClick={toggleSidebar}
-            >
-              <Link to="/login">Login</Link>
-            </button>
+            {token ? (
+              <div className="flex gap-6">
+                <li className="flex items-end">
+                  <Link to="/profile" className="hover:text-gray-500">
+                    Profile
+                  </Link>
+                </li>
+                <button
+                  className={`py-1 px-4 ${
+                    darkMode ? "bg-[#24CFA6]" : "bg-blue-400"
+                  } rounded-md text-white`}
+                >
+                  <span onClick={logoutUser}>Logout</span>
+                </button>
+              </div>
+            ) : (
+              <button
+                className={`py-1 px-4 ${
+                  darkMode ? "bg-[#24CFA6]" : "bg-blue-400"
+                } rounded-md text-white`}
+              >
+                <Link to="/login">login</Link>
+              </button>
+            )}
           </li>
         </ul>
       </div>
