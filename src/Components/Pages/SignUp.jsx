@@ -19,9 +19,8 @@ function SignUp() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (token) {
+    if(token) {
       navigate("/");
-      toast.info("login already");
     }
   }, [token]);
 

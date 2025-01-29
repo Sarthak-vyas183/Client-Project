@@ -11,13 +11,14 @@ function Login() {
     email: "",
     password: "",
   });
+  const navigate = useNavigate();
   useEffect(() => {
     if (token) {
       navigate("/");
       toast.info("login already");
     }
   }, [token]);
-  const navigate = useNavigate();
+ 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setLoginForm((pre) => ({
