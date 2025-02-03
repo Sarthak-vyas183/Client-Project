@@ -5,8 +5,7 @@ import React, { useState, useEffect } from "react";
 import userContext from "./userContext";
 import axios from "axios";
 import { toast } from "react-toastify";
-import { error } from "jquery";
-import { RiLogoutCircleRFill } from "react-icons/ri";
+import { Link, useNavigate } from "react-router-dom";
 
 const UserContextProvider = ({ children }) => {
   const [darkMode, setDarkMode] = useState(false);
@@ -17,6 +16,7 @@ const UserContextProvider = ({ children }) => {
     setToken(serverToken);
     localStorage.setItem("token", serverToken);
   };
+  const navigate = useNavigate();
 
   const logoutUser = async () => {
     try {
@@ -29,7 +29,8 @@ const UserContextProvider = ({ children }) => {
       );
       if (!response) {
         return toast("logout failed !");
-      }
+      } 
+      navigate("/");
       setToken("");
       localStorage.removeItem("token");
       toast.info("You are logged out");
@@ -85,6 +86,7 @@ const UserContextProvider = ({ children }) => {
         updateUser,
         user,
         logoutUser,
+        setUser
       }}
     >
       {children}
