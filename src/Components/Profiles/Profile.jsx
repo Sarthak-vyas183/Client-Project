@@ -4,12 +4,25 @@ import userContext from "../../Context/userContext";
 import defaultProfile from "../../assets/Images/profile.png";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { CiEdit } from "react-icons/ci";
 import axios from "axios";
 
 function Profile() {
   const { darkMode, user, setUser } = useContext(userContext);
   const [token, setToken] = useState(localStorage.getItem("token"));
   const [loading, setLoading] = useState(false);
+  const [bioEditMode, setBioEditMode] = useState(false);
+  const [nameEditMode, setNameEditMode] = useState(false);
+  const [emailEditMode, setEmailEditMode] = useState(false);
+
+  const [FormData, setFormData] = useState({
+    fullName: user && user.fullName,
+    email: user && user.email,
+    bio: user && user.bio,
+    username: user && user.username,
+    contact: user && user.contact,
+  });
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -18,11 +31,6 @@ function Profile() {
       toast.info("Please login");
     }
   }, [token, navigate]);
-
-  const [bioEditMode, setBioEditMode] = useState(false);
-  const [newBio, setNewBio] = useState("");
-  const [services, setServices] = useState([]);
-  const [requests, setRequests] = useState([]);
 
   const handleImageChange = async (e) => {
     const file = e.target.files[0];
@@ -54,6 +62,71 @@ function Profile() {
     }
   };
 
+  const handleBioUpdate = async () => {
+    setLoading(true);
+    try {
+      const response = await axios.patch(
+        "api/v1/user/profile",
+        { bio: FormData.bio },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      if (response.status === 200) {
+        toast.success("Bio updated successfully");
+        setUser((prevUser) => ({ ...prevUser, bio: FormData.bio }));
+        setBioEditMode(false);
+      } else {
+        toast.error("Failed to update bio");
+      }
+    } catch (error) {
+      toast.error("An error occurred while updating the bio");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleProfileUpdate = async () => {
+    setLoading(true);
+    try {
+      const response = await axios.patch(
+        "api/v1/user/profile",
+        {
+          fullName: FormData.fullName,
+          email: FormData.email,
+          bio: FormData.bio,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      if (response.status === 200) {
+        toast.success("Profile updated successfully");
+        setUser((prevUser) => ({
+          ...prevUser,
+          fullName: FormData.fullName,
+          email: FormData.email,
+          bio: FormData.bio,
+        }));
+        setBioEditMode(false);
+        setNameEditMode(false);
+        setEmailEditMode(false);
+      } else {
+        toast.error("Failed to update profile");
+      }
+    } catch (error) {
+      toast.error("An error occurred while updating the profile");
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <div className={`min-h-screen flex justify-center items-center px-4 py-16 ${darkMode ? "bg-[#0C0C0C] text-white" : "bg-white text-black"}`}>
       <div className="max-w-3xl w-full shadow-lg rounded-lg p-6 bg-opacity-80 bg-gray-800 text-gray-200">
@@ -80,8 +153,64 @@ function Profile() {
             />
           </div>
           {loading && <p className="text-sm text-yellow-500">Uploading...</p>}
-          <h1 className="text-2xl font-semibold mb-1">{user && user.fullName}</h1>
-          <p className="text-sm text-gray-400">{user && user.email}</p>
+          <div className="text-2xl font-semibold mb-1 bg-transparent outline-none flex justify-center gap-2 text-center">
+            {nameEditMode ? (
+              <div className="flex items-center gap-2">
+                <input
+                  type="text"
+                  value={FormData.fullName}
+                  onChange={(e) => setFormData({ ...FormData, fullName: e.target.value })}
+                  className="w-full p-2 border rounded bg-gray-700 text-white"
+                />
+                <button
+                  onClick={handleProfileUpdate}
+                  className="text-blue-100 text-lg underline"
+                >
+                  Save
+                </button>
+                <button
+                  onClick={() => setNameEditMode(false)}
+                  className="text-blue-100 text-lg underline"
+                >
+                  Cancel
+                </button>
+              </div>
+            ) : (
+              <>
+                {user && user.fullName}
+                <CiEdit onClick={() => setNameEditMode(true)} className="cursor-pointer" />
+              </>
+            )}
+          </div>
+          <div className="text-sm text-gray-400 flex justify-center gap-2">
+            {emailEditMode ? (
+              <div className="flex items-center gap-2">
+                <input
+                  type="email"
+                  value={FormData.email}
+                  onChange={(e) => setFormData({ ...FormData, email: e.target.value })}
+                  className="w-full p-2 border rounded bg-gray-700 text-white"
+                />
+                <button
+                  onClick={handleProfileUpdate}
+                  className="text-white underline"
+                >
+                  Save
+                </button>
+                <button
+                  onClick={() => setEmailEditMode(false)}
+                  className="text-white underline"
+                >
+                  Cancel
+                </button>
+              </div>
+            ) : (
+              <>
+                {user && user.email}
+                <CiEdit onClick={() => setEmailEditMode(true)} className="cursor-pointer" />
+              </>
+            )}
+          </div>
         </div>
 
         {/* Bio Section */}
@@ -90,11 +219,12 @@ function Profile() {
           {bioEditMode ? (
             <div>
               <textarea
-                value={newBio}
-                onChange={(e) => setNewBio(e.target.value)}
-                className="w-full p-2 border rounded bg-gray-700 text-white"
+                value={FormData.bio}
+                onChange={(e) => setFormData({ ...FormData, bio: e.target.value })}
+                className="w-full p-3 border rounded bg-gray-700 text-white resize-none h-32"
+                placeholder="Write something about yourself..."
               />
-              <div className="mt-2 flex gap-4">
+              <div className="mt-2 flex gap-4 justify-end">
                 <button
                   onClick={handleBioUpdate}
                   className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 transition"
@@ -111,7 +241,7 @@ function Profile() {
             </div>
           ) : (
             <div>
-              <p className="text-gray-300 text-sm leading-relaxed">{user && user.fullName}</p>
+              <p className="text-gray-300 text-sm leading-relaxed">{user && user.bio}</p>
               <button
                 onClick={() => setBioEditMode(true)}
                 className="mt-2 text-blue-200 underline hover:text-blue-400 transition"
@@ -141,7 +271,7 @@ function Profile() {
           </div>
         </div>
       </div>
-    </div>
+    </div >
   );
 }
 
